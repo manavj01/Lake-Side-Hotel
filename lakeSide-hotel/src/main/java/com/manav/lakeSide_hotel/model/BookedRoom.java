@@ -56,8 +56,4 @@ public class BookedRoom {
         this.numOfAdults = numOfAdults;
         calculateTotalNumberOfGuest();
     }
-
-    public void setBookingConfirmationCode(String bookingConfirmationCode) {
-        this.bookingConfirmationCode = bookingConfirmationCode;
-    }
 }
