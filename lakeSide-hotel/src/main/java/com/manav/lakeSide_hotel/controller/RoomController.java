@@ -26,12 +26,14 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/rooms")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {"http://localhost:5173", "http://localhost:4000"})
 public class RoomController {
 
 
     private final IRoomService roomService;
     private final BookingService bookingService;
+
+
 
     @PostMapping("/add/new-room")
     public ResponseEntity<RoomResponse> addNewRoom(
@@ -47,10 +49,14 @@ public class RoomController {
         return ResponseEntity.ok(response);
     }
 
+
+
     @GetMapping("/room/types")
     public List<String> getRoomTypes() {
         return roomService.getAllRoomTypes();
     }
+
+
 
     @GetMapping("/all-rooms")
     public ResponseEntity<List<RoomResponse>> getAllRooms() throws SQLException, PhotoRetrieverException {
@@ -68,6 +74,8 @@ public class RoomController {
 
         return ResponseEntity.ok(roomResponses);
     }
+
+
 
     private RoomResponse getRoomResponse(Room room) throws PhotoRetrieverException {
         List<BookedRoom> bookings = getAllBookingsByRoomId(room.getId());
@@ -91,15 +99,21 @@ public class RoomController {
                 room.getRoomPrice(), room.isBooked(), photoBytes);
     }
 
+
+
     private List<BookedRoom> getAllBookingsByRoomId(Long roomId) {
         return bookingService.getAllBookingsByRoomId(roomId);
     }
+
+
 
     @DeleteMapping("/delete/room/{roomId}")
     public ResponseEntity<Void> deleteRoom(@PathVariable Long roomId) {
         roomService.deleteRoom(roomId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+
 
     @PutMapping("/update/room/{roomId}")
     public ResponseEntity<RoomResponse> updateRoom(@PathVariable Long roomId,
@@ -115,8 +129,9 @@ public class RoomController {
         theRoom.setPhoto(photoBlob);
         RoomResponse roomResponse = getRoomResponse(theRoom);
         return ResponseEntity.ok(roomResponse);
-
     }
+
+
 
     @GetMapping("/room/{roomId}")
     public ResponseEntity<Optional<RoomResponse>> getRoomById(@PathVariable Long roomId){

@@ -5,6 +5,14 @@ export const api = axios.create({
     baseURL: "http://localhost:8080"
 })
 
+export const getHeader = () => {
+	const token = localStorage.getItem("token")
+	return {
+		Authorization: `Bearer ${token}`,
+		"Content-Type": "application/json"
+	}
+}
+
 /**
  * 
  * @returns This functions adds a new room to the db 
@@ -53,9 +61,9 @@ export async function getAllRooms() {
 export async function deleteRoom(roomId) {
     try {
         const result = await api.delete(`/rooms/delete/room/${roomId}`
-            //     , {
-            // 	headers: getHeader()
-            // }
+                , {
+            	headers: getHeader()
+            }
         )
         return result.data
     } catch (error) {
