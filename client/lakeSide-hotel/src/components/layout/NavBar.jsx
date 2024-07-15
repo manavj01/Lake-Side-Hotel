@@ -17,7 +17,7 @@ const NavBar = () => {
   console.log("userRole:", userRole);
 
 	return (
-		<nav className="navbar navbar-expand-lg bg-body-tertiary px-5 shadow mt-5 sticky-top">
+		<nav className="navbar navbar-expand-lg bg-body-tertiary px-5 shadow sticky-top">
 			<div className="container-fluid">
 				<Link to={"/"} className="navbar-brand">
 					<span className="hotel-color">lakeSide Hotel</span>
@@ -42,13 +42,13 @@ const NavBar = () => {
 							</NavLink>
 						</li>
 
-						{isLoggedIn && userRole === "ROLE_ADMIN" && (
+						{/* {isLoggedIn && userRole === "ROLE_ADMIN" && ( */}
 							<li className="nav-item">
 								<NavLink className="nav-link" aria-current="page" to={"/admin"}>
 									Admin
 								</NavLink>
 							</li>
-						)}
+						{/* ) } */}
 					</ul>
 
 					<ul className="d-flex navbar-nav">

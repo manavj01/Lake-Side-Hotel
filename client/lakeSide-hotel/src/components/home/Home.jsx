@@ -1,4 +1,5 @@
-import React, { useContext } from "react"
+/* eslint-disable no-unused-vars */
+import React, { useContext } from 'react'
 import MainHeader from "../layout/MainHeader"
 import HotelService from "../common/HotelService"
 import Parallax from "../common/Parallax"
