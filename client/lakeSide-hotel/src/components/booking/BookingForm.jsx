@@ -17,7 +17,8 @@ const currentUser = localStorage.getItem("userId")
 
 	const [booking, setBooking] = useState({
 		guestFullName: "",
-		guestEmail: currentUser,
+		// guestEmail: "currentUser", // to be done after adding local storage
+		guestEmail: "",
 		checkInDate: "",
 		checkOutDate: "",
 		numOfAdults: "",
@@ -106,7 +107,7 @@ const currentUser = localStorage.getItem("userId")
 							<Form noValidate validated={validated} onSubmit={handleSubmit}>
 								<Form.Group>
 									<Form.Label htmlFor="guestFullName" className="hotel-color">
-										Fullname
+										Full Name
 									</Form.Label>
 									<FormControl
 										required
@@ -134,7 +135,7 @@ const currentUser = localStorage.getItem("userId")
 										value={booking.guestEmail}
 										placeholder="Enter your email"
 										onChange={handleInputChange}
-										disabled
+										//disabled
 									/>
 									<Form.Control.Feedback type="invalid">
 										Please enter a valid email address.
